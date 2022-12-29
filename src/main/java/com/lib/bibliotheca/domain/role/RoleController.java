@@ -24,4 +24,10 @@ public class RoleController {
     public List<RoleDto> getAllRoles() {
         return roleService.getAllRoles();
     }
+
+    @DeleteMapping("/delete")
+    @Operation(summary = "Delete role by role name")
+    public void deleteRole(String name) {
+        roleService.deleteRole(name);
+    }
 }

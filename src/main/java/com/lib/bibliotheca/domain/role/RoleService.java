@@ -27,4 +27,8 @@ public class RoleService {
 
         return roleMapper.toDto(roles);
     }
+
+    public void deleteRole(String name) {
+        roleRepository.deleteByName(name);
+    }
 }

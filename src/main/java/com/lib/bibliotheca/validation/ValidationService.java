@@ -2,6 +2,8 @@ package com.lib.bibliotheca.validation;
 
 import com.lib.bibliotheca.domain.role.Role;
 import com.lib.bibliotheca.domain.role.RoleRepository;
+import com.lib.bibliotheca.domain.user.User;
+import com.lib.bibliotheca.domain.user.UserRepository;
 import com.lib.bibliotheca.infrastructure.exeption.DataAlreadyExistsException;
 import com.lib.bibliotheca.infrastructure.exeption.DataNotFoundException;
 import org.springframework.stereotype.Service;
@@ -14,6 +16,9 @@ public class ValidationService {
 
     @Resource
     private RoleRepository roleRepository;
+
+    @Resource
+    private UserRepository userRepository;
 
     /**
      * Checks whether role already exists in database.
@@ -29,7 +34,21 @@ public class ValidationService {
     }
 
     /**
-     * Checks whether there are roles in database.
+     * Checks whether chosen username or password already exist in database.
+     */
+    public String userExists(String username, String password) {
+        List<User> users = userRepository.findAll();
+        for (User user : users) {
+            if (user.getUsername().equals(username) || user.getPassword().equals(password)) {
+                String message = "Username or password is taken!";
+                throw new DataAlreadyExistsException(message);
+            }
+        }
+        return "New user is created!";
+    }
+
+    /**
+     * Checks whether there are roles in database to return.
      */
     public String rolesNotFound() {
         List<Role> roleList = roleRepository.findAll();

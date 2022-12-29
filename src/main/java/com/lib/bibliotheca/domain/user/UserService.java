@@ -1,6 +1,7 @@
 package com.lib.bibliotheca.domain.user;
 
 import com.lib.bibliotheca.domain.role.Role;
+import com.lib.bibliotheca.validation.ValidationService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -11,9 +12,15 @@ public class UserService {
     @Resource
     private UserMapper userMapper;
 
-    @Resource UserRepository userRepository;
+    @Resource
+    private UserRepository userRepository;
+
+    @Resource
+    private ValidationService validationService;
 
     public void addUser(UserRequest request) {
+        validationService.userExists(request.getUsername(), request.getPassword());
+
         User user = userMapper.toEntity(request);
 
         User newUser = new User();

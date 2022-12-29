@@ -18,6 +18,9 @@ public class UserService {
     @Resource
     private ValidationService validationService;
 
+    /**
+     * Validates whether the username or password already exists in database before adding new user.
+     */
     public void addUser(UserRequest request) {
         validationService.userExists(request.getUsername(), request.getPassword());
 

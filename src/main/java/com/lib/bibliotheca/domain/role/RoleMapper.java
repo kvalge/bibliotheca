@@ -6,6 +6,8 @@ import org.mapstruct.*;
 public interface RoleMapper {
     Role toEntity(RoleDto roleDto);
 
+    Role toEntity(RoleRequest roleRequest);
+
     RoleDto toDto(Role role);
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)

@@ -6,4 +6,6 @@ import java.io.Serializable;
 
 @Data
 public class RoleRequest implements Serializable {
+
+    private String name;
 }

@@ -1,6 +1,7 @@
 package com.lib.bibliotheca.domain.user;
 
 import com.lib.bibliotheca.domain.role.Role;
+import com.lib.bibliotheca.domain.role.RoleRepository;
 import com.lib.bibliotheca.validation.ValidationService;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +17,9 @@ public class UserService {
     private UserRepository userRepository;
 
     @Resource
+    private RoleRepository roleRepository;
+
+    @Resource
     private ValidationService validationService;
 
     /**
@@ -26,15 +30,11 @@ public class UserService {
 
         User user = userMapper.toEntity(request);
 
+        Role role = roleRepository.findByName(request.getRoleName());
+
         User newUser = new User();
         newUser.setUsername(user.getUsername());
         newUser.setPassword(user.getPassword());
-
-        Integer id = user.getRole().getId();
-        String name = user.getRole().getName();
-        Role role = new Role();
-        role.setId(id);
-        role.setName(name);
         newUser.setRole(role);
 
         userRepository.save(newUser);

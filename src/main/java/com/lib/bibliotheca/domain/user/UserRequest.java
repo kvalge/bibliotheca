@@ -9,6 +9,5 @@ public class UserRequest implements Serializable {
 
     private String username;
     private String password;
-    private int roleId;
     private String roleName;
 }

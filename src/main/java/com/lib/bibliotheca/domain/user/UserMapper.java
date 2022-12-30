@@ -7,8 +7,6 @@ import org.mapstruct.*;
 public interface UserMapper {
     User toEntity(UserDto userDto);
 
-    @Mapping(target = "role.name", source = "roleName")
-    @Mapping(target = "role.id", source = "roleId")
     User toEntity(UserRequest userRequest);
 
     UserDto toDto(User user);

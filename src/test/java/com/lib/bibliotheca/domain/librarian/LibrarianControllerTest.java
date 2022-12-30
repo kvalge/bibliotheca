@@ -66,13 +66,13 @@ class LibrarianControllerTest {
 
         librarianService.addLibrarian(librarianRequest);
 
-        List<LibrarianDto> librarianDtoList = librarianController.getAllLibrarians();
+        List<LibrarianResponse> responseList = librarianController.getAllLibrarians();
 
         String idCode = null;
         String requestIdCode = librarianRequest.getIdCode();
-        for (LibrarianDto librarianDto : librarianDtoList) {
-            if (requestIdCode.equals(librarianDto.getIdCode())) {
-                idCode = librarianDto.getIdCode();
+        for (LibrarianResponse librarianResponse : responseList) {
+            if (requestIdCode.equals(librarianResponse.getIdCode())) {
+                idCode = librarianResponse.getIdCode();
             }
         }
 

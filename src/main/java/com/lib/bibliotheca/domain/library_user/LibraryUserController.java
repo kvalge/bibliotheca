@@ -21,7 +21,7 @@ public class LibraryUserController {
 
     @GetMapping("/all")
     @Operation(summary = "Returns all library users")
-    public List<LibraryUserDto> getAllUsers() {
+    public List<LibraryUserResponse> getAllUsers() {
         return libraryUserService.getAllUsers();
     }
 

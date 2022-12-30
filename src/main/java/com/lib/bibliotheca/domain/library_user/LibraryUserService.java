@@ -32,9 +32,9 @@ public class LibraryUserService {
         libraryUserRepository.save(newLibraryUser);
     }
 
-    public List<LibraryUserDto> getAllUsers() {
+    public List<LibraryUserResponse> getAllUsers() {
         List<LibraryUser> libraryUsers = libraryUserRepository.findAll();
-        return libraryUserMapper.toDto(libraryUsers);
+        return libraryUserMapper.toResponse(libraryUsers);
     }
 
     public LibraryUserResponse getUserByIdCode(String idCode) {

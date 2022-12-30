@@ -5,6 +5,7 @@ import com.lib.bibliotheca.domain.user.UserRepository;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 public class LibrarianService {
@@ -28,5 +29,10 @@ public class LibrarianService {
         newLibrarian.setUser(user);
 
         librarianRepository.save(newLibrarian);
+    }
+
+    public List<LibrarianDto> getAllLibrarians() {
+        List<Librarian> librarians = librarianRepository.findAll();
+        return librarianMapper.toDto(librarians);
     }
 }

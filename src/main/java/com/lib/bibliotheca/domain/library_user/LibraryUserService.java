@@ -3,6 +3,7 @@ package com.lib.bibliotheca.domain.library_user;
 import com.lib.bibliotheca.domain.user.User;
 import com.lib.bibliotheca.domain.user.UserRepository;
 import com.lib.bibliotheca.domain.user.UserService;
+import com.lib.bibliotheca.validation.ValidationService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -23,7 +24,12 @@ public class LibraryUserService {
     @Resource
     private UserService userService;
 
+    @Resource
+    private ValidationService validationService;
+
     public void addNewUser(LibraryUserRequest request) {
+        validationService.libraryUserExists(request.getIdCode());
+
         LibraryUser libraryUser = libraryUserMapper.toEntity(request);
         User user = userRepository.findByUserName(request.getUserName());
 
@@ -37,16 +43,22 @@ public class LibraryUserService {
     }
 
     public List<LibraryUserResponse> getAllUsers() {
+        validationService.libraryUsersNotFound();
+
         List<LibraryUser> libraryUsers = libraryUserRepository.findAll();
         return libraryUserMapper.toResponse(libraryUsers);
     }
 
     public LibraryUserResponse getUserByIdCode(String idCode) {
+        validationService.libraryUserNotFound(idCode);
+
         LibraryUser libraryUser = libraryUserRepository.findByIdCode(idCode);
         return libraryUserMapper.toResponse(libraryUser);
     }
 
     public void deleteUser(String idCode) {
+        validationService.librarianNotFound(idCode);
+
         String username = libraryUserRepository.findByIdCode(idCode).getUser().getUsername();
 
         libraryUserRepository.deleteByIdCode(idCode);

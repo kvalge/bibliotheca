@@ -36,4 +36,9 @@ public class LibraryUserService {
         List<LibraryUser> libraryUsers = libraryUserRepository.findAll();
         return libraryUserMapper.toDto(libraryUsers);
     }
+
+    public LibraryUserResponse getUserByIdCode(String idCode) {
+        LibraryUser libraryUser = libraryUserRepository.findByIdCode(idCode);
+        return libraryUserMapper.toResponse(libraryUser);
+    }
 }

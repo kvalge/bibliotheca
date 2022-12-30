@@ -25,4 +25,9 @@ public class LibraryUserController {
         return libraryUserService.getAllUsers();
     }
 
+    @GetMapping("/idcode")
+    @Operation(summary = "Returns user by id code")
+    public LibraryUserResponse getUserByIdCode(@RequestParam String idCode) {
+        return libraryUserService.getUserByIdCode(idCode);
+    }
 }

@@ -13,6 +13,8 @@ public interface LibraryUserMapper {
 
     LibraryUserDto toDto(LibraryUser libraryUser);
 
+    LibraryUserResponse toResponse(LibraryUser libraryUser);
+
     List<LibraryUserDto> toDto(List<LibraryUser> libraryUsers);
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)

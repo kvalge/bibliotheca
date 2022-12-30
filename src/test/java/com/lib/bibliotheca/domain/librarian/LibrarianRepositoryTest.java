@@ -5,9 +5,8 @@ import com.lib.bibliotheca.domain.role.RoleRepository;
 import com.lib.bibliotheca.domain.user.User;
 import com.lib.bibliotheca.domain.user.UserRepository;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import javax.annotation.Resource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -15,16 +14,16 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 @SpringBootTest
 class LibrarianRepositoryTest {
 
-    @Resource
+    @Autowired
     private LibrarianRepository librarianRepository;
 
-    @Resource
+    @Autowired
     private LibrarianService librarianService;
 
-    @Resource
+    @Autowired
     private UserRepository userRepository;
 
-    @Resource
+    @Autowired
     private RoleRepository roleRepository;
 
     /**

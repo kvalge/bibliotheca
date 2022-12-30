@@ -5,10 +5,10 @@ import com.lib.bibliotheca.domain.role.RoleRepository;
 import com.lib.bibliotheca.domain.user.User;
 import com.lib.bibliotheca.domain.user.UserRepository;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -17,16 +17,16 @@ import static org.junit.jupiter.api.Assertions.*;
 @Transactional
 class LibrarianServiceTest {
 
-    @Resource
+    @Autowired
     private LibrarianService librarianService;
 
-    @Resource
+    @Autowired
     private LibrarianRepository librarianRepository;
 
-    @Resource
+    @Autowired
     private UserRepository userRepository;
 
-    @Resource
+    @Autowired
     private RoleRepository roleRepository;
 
     /**

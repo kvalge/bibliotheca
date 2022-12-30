@@ -1,5 +1,7 @@
 package com.lib.bibliotheca.validation;
 
+import com.lib.bibliotheca.domain.librarian.Librarian;
+import com.lib.bibliotheca.domain.librarian.LibrarianRepository;
 import com.lib.bibliotheca.domain.role.Role;
 import com.lib.bibliotheca.domain.role.RoleRepository;
 import com.lib.bibliotheca.domain.user.User;
@@ -19,6 +21,9 @@ public class ValidationService {
 
     @Resource
     private UserRepository userRepository;
+
+    @Resource
+    private LibrarianRepository librarianRepository;
 
     /**
      * Checks whether role already exists in database.
@@ -48,12 +53,25 @@ public class ValidationService {
     }
 
     /**
+     * Checks whether librarian with inserted id code already exist in database.
+     */
+    public String librarianExists(String idCode) {
+        Librarian librarian = librarianRepository.findByIdCode(idCode);
+        if (librarian == null) {
+            return "New librarian is added!";
+        } else {
+            String message = "Librarian with id code '" + idCode + "' already exists";
+            throw new DataAlreadyExistsException(message);
+        }
+    }
+
+    /**
      * Checks whether there are roles in database to return.
      */
     public String rolesNotFound() {
         List<Role> roleList = roleRepository.findAll();
         if (roleList.size() != 0) {
-            return "Role list request is completed!";
+            return "Requested list is completed!";
         } else {
             String message = "No roles found!";
             throw new DataNotFoundException(message);
@@ -61,7 +79,21 @@ public class ValidationService {
     }
 
     /**
-     * Checks whether there is certain role in database.
+     * Checks whether there are librarians in database to return.
+     */
+    public String librariansNotFound() {
+        List<Librarian> librarianList = librarianRepository.findAll();
+        if (librarianList.size() != 0) {
+            return "Requested list is completed!";
+        } else {
+            String message = "No librarian found!";
+            throw new DataNotFoundException(message);
+        }
+
+    }
+
+    /**
+     * Checks whether there is requested role in database.
      */
     public String roleNotFound(String name) {
         Role role = roleRepository.findByName(name);
@@ -69,6 +101,19 @@ public class ValidationService {
             return "Role is found!";
         } else {
             String message = "No such role exists!";
+            throw new DataNotFoundException(message);
+        }
+    }
+
+    /**
+     * Checks whether there is requested librarian in database.
+     */
+    public String librarianNotFound(String idCode) {
+        Librarian librarian = librarianRepository.findByIdCode(idCode);
+        if (librarian != null) {
+            return "Librarian is found!";
+        } else {
+            String message = "No librarian with id code '" + idCode + "' exists!";
             throw new DataNotFoundException(message);
         }
     }

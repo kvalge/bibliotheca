@@ -2,6 +2,7 @@ package com.lib.bibliotheca.domain.librarian;
 
 import com.lib.bibliotheca.domain.user.User;
 import com.lib.bibliotheca.domain.user.UserRepository;
+import com.lib.bibliotheca.validation.ValidationService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -19,7 +20,15 @@ public class LibrarianService {
     @Resource
     private UserRepository userRepository;
 
+    @Resource
+    private ValidationService validationService;
+
+    /**
+     * Validates whether the librarian already exists in database before adding new librarian.
+     */
     public void addLibrarian(LibrarianRequest request) {
+        validationService.librarianExists(request.getIdCode());
+
         Librarian librarian = librarianMapper.toEntity(request);
 
         User user = userRepository.findByUserName(request.getUserName());
@@ -31,12 +40,23 @@ public class LibrarianService {
         librarianRepository.save(newLibrarian);
     }
 
+    /**
+     * It is checked isn't the librarians' database empty before returning all librarians.
+     */
     public List<LibrarianDto> getAllLibrarians() {
+        validationService.librariansNotFound();
+
         List<Librarian> librarians = librarianRepository.findAll();
         return librarianMapper.toDto(librarians);
     }
 
+    /**
+     * It is checked is there a requested librarian in database before finding librarian by id code
+     * for deleting.
+     */
     public void deleteLibrarian(String idCode) {
+        validationService.librarianNotFound(idCode);
+
         librarianRepository.deleteByIdCode(idCode);
     }
 }

@@ -7,6 +7,8 @@ import org.mapstruct.*;
 public interface LibrarianMapper {
     Librarian toEntity(LibrarianDto librarianDto);
 
+    Librarian toEntity(LibrarianRequest librarianRequest);
+
     LibrarianDto toDto(Librarian librarian);
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)

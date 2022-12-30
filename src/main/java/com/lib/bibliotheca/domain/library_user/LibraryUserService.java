@@ -57,7 +57,7 @@ public class LibraryUserService {
     }
 
     public void deleteUser(String idCode) {
-        validationService.librarianNotFound(idCode);
+        validationService.libraryUserNotFound(idCode);
 
         String username = libraryUserRepository.findByIdCode(idCode).getUser().getUsername();
 

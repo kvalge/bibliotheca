@@ -20,4 +20,11 @@ public class LibraryUserController {
     public void addNewUser(@RequestBody LibraryUserRequest request) {
         libraryUserService.addNewUser(request);
     }
+
+    @GetMapping("/all")
+    @Operation(summary = "Returns all library users")
+    public List<LibraryUserDto> getAllUsers() {
+        return libraryUserService.getAllUsers();
+    }
+
 }

@@ -22,7 +22,6 @@ class UserServiceTest {
         UserRequest userRequest = new UserRequest();
         userRequest.setUsername("Kasutaja");
         userRequest.setPassword("Salasõna");
-        userRequest.setRoleId(2);
         userRequest.setRoleName("user");
 
         userService.addUser(userRequest);

@@ -16,14 +16,13 @@ class UserControllerTest {
     private UserRepository userRepository;
 
     /**
-     * Tests whether hard coded role request saved to database via addUser method will not return null.
+     * Tests whether hard coded user request saved to database via addUser method will not return null.
      */
     @Test
     void addUser() {
         UserRequest userRequest = new UserRequest();
         userRequest.setUsername("Kasutaja");
         userRequest.setPassword("Salasõna");
-        userRequest.setRoleId(2);
         userRequest.setRoleName("user");
 
         userController.addUser(userRequest);

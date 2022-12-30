@@ -11,9 +11,7 @@ public interface LibrarianMapper {
 
     Librarian toEntity(LibrarianRequest librarianRequest);
 
-    LibrarianDto toDto(Librarian librarian);
-
-    List<LibrarianDto> toDto(List<Librarian> librarian);
+    List<LibrarianResponse> toResponse(List<Librarian> librarian);
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     Librarian partialUpdate(LibrarianDto librarianDto, @MappingTarget Librarian librarian);

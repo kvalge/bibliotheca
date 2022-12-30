@@ -43,11 +43,12 @@ public class LibrarianService {
     /**
      * It is checked isn't the librarians' database empty before returning all librarians.
      */
-    public List<LibrarianDto> getAllLibrarians() {
+    public List<LibrarianResponse> getAllLibrarians() {
         validationService.librariansNotFound();
 
         List<Librarian> librarians = librarianRepository.findAll();
-        return librarianMapper.toDto(librarians);
+
+        return librarianMapper.toResponse(librarians);
     }
 
     /**

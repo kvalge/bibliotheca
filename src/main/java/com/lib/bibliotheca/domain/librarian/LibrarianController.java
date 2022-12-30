@@ -21,7 +21,7 @@ public class LibrarianController {
 
     @GetMapping("/all")
     @Operation(summary = "Returns all librarians")
-    public List<LibrarianDto> getAllLibrarians() {
+    public List<LibrarianResponse> getAllLibrarians() {
         return librarianService.getAllLibrarians();
     }
 

@@ -24,4 +24,10 @@ public class LibrarianController {
     public List<LibrarianDto> getAllLibrarians() {
         return librarianService.getAllLibrarians();
     }
+
+    @DeleteMapping("/delete")
+    @Operation(summary = "Deletes librarian by id code")
+    public void deleteLibrarian(String idCode){
+        librarianService.deleteLibrarian(idCode);
+    }
 }

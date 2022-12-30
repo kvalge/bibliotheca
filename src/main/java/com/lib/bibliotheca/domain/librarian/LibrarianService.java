@@ -35,4 +35,8 @@ public class LibrarianService {
         List<Librarian> librarians = librarianRepository.findAll();
         return librarianMapper.toDto(librarians);
     }
+
+    public void deleteLibrarian(String idCode) {
+        librarianRepository.deleteByIdCode(idCode);
+    }
 }

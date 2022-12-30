@@ -30,4 +30,10 @@ public class LibraryUserController {
     public LibraryUserResponse getUserByIdCode(@RequestParam String idCode) {
         return libraryUserService.getUserByIdCode(idCode);
     }
+
+    @DeleteMapping("/delete")
+    @Operation(summary = "Deleting library user by id code also deletes connected user account by user name")
+    public void deleteUser(@RequestParam String idCode) {
+        libraryUserService.deleteUser(idCode);
+    }
 }

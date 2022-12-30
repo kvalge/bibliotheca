@@ -2,6 +2,7 @@ package com.lib.bibliotheca.domain.library_user;
 
 import com.lib.bibliotheca.domain.user.User;
 import com.lib.bibliotheca.domain.user.UserRepository;
+import com.lib.bibliotheca.domain.user.UserService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -18,6 +19,9 @@ public class LibraryUserService {
 
     @Resource
     private UserRepository userRepository;
+
+    @Resource
+    private UserService userService;
 
     public void addNewUser(LibraryUserRequest request) {
         LibraryUser libraryUser = libraryUserMapper.toEntity(request);
@@ -40,5 +44,13 @@ public class LibraryUserService {
     public LibraryUserResponse getUserByIdCode(String idCode) {
         LibraryUser libraryUser = libraryUserRepository.findByIdCode(idCode);
         return libraryUserMapper.toResponse(libraryUser);
+    }
+
+    public void deleteUser(String idCode) {
+        String username = libraryUserRepository.findByIdCode(idCode).getUser().getUsername();
+
+        libraryUserRepository.deleteByIdCode(idCode);
+
+        userService.deleteUser(username);
     }
 }

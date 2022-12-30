@@ -39,4 +39,8 @@ public class UserService {
 
         userRepository.save(newUser);
     }
+
+    public void deleteUser(String username) {
+        userRepository.deleteByUsername(username);
+    }
 }

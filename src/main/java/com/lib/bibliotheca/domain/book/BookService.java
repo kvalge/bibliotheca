@@ -3,6 +3,7 @@ package com.lib.bibliotheca.domain.book;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 public class BookService {
@@ -10,7 +11,8 @@ public class BookService {
     @Resource
     private BookMapper bookMapper;
 
-    @Resource BookRepository bookRepository;
+    @Resource
+    BookRepository bookRepository;
 
     public void addNewBook(BookRequest request) {
         Book book = bookMapper.toEntity(request);
@@ -32,5 +34,11 @@ public class BookService {
         newBook.setLocation(book.getLocation());
 
         bookRepository.save(newBook);
+    }
+
+    public List<BookDto> getAllBooks() {
+        List<Book> books = bookRepository.findAll();
+
+        return bookMapper.toDto(books);
     }
 }

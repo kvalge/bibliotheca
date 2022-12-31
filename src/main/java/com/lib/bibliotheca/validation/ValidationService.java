@@ -1,5 +1,7 @@
 package com.lib.bibliotheca.validation;
 
+import com.lib.bibliotheca.domain.book.Book;
+import com.lib.bibliotheca.domain.book.BookRepository;
 import com.lib.bibliotheca.domain.librarian.Librarian;
 import com.lib.bibliotheca.domain.librarian.LibrarianRepository;
 import com.lib.bibliotheca.domain.library_user.LibraryUser;
@@ -29,6 +31,9 @@ public class ValidationService {
 
     @Resource
     private LibraryUserRepository libraryUserRepository;
+
+    @Resource
+    private BookRepository bookRepository;
 
     /**
      * Checks whether role already exists in database.
@@ -84,6 +89,19 @@ public class ValidationService {
     }
 
     /**
+     * Checks whether book with inserted name already exist in database.
+     */
+    public String bookExists(String name) {
+        Book book = bookRepository.findByName(name);
+        if (book == null) {
+            return "New book is added!";
+        } else {
+            String message = "Book with name '" + name + "' already exists";
+            throw new DataAlreadyExistsException(message);
+        }
+    }
+
+    /**
      * Checks whether there are roles in database to return.
      */
     public String rolesNotFound() {
@@ -123,6 +141,19 @@ public class ValidationService {
     }
 
     /**
+     * Checks whether there are books in database to return.
+     */
+    public String booksNotFound() {
+        List<Book> bookList = bookRepository.findAll();
+        if (bookList.size() != 0) {
+            return "Requested list is completed!";
+        } else {
+            String message = "No book found!";
+            throw new DataNotFoundException(message);
+        }
+    }
+
+    /**
      * Checks whether there is requested role in database.
      */
     public String roleNotFound(String name) {
@@ -157,6 +188,19 @@ public class ValidationService {
             return "Library user is found!";
         } else {
             String message = "No library user with id code '" + idCode + "' exists!";
+            throw new DataNotFoundException(message);
+        }
+    }
+
+    /**
+     * Checks whether there is requested book in database.
+     */
+    public String bookNotFound(String name) {
+        Book book = bookRepository.findByName(name);
+        if (book != null) {
+            return "Book is found!";
+        } else {
+            String message = "No book with the name '" + name + "' exists!";
             throw new DataNotFoundException(message);
         }
     }

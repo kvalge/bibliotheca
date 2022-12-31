@@ -36,4 +36,10 @@ public class BookController {
     public void updateBook(@RequestBody BookRequest request) {
         bookService.updateBook(request);
     }
+
+    @DeleteMapping("/delete")
+    @Operation(summary = "Deletes the book by the name")
+    public void deleteBook(@RequestParam String name) {
+        bookService.deleteBook(name);
+    }
 }

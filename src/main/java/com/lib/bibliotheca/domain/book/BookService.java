@@ -68,4 +68,8 @@ public class BookService {
 
         bookRepository.save(updatedBook);
     }
+
+    public void deleteBook(String name) {
+        bookRepository.deleteByName(name);
+    }
 }

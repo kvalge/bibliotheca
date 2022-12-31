@@ -9,6 +9,8 @@ import org.mapstruct.*;
 public interface LendingMapper {
     Lending toEntity(LendingDto lendingDto);
 
+    Lending toEntity(LendingRequest lendingRequest);
+
     LendingDto toDto(Lending lending);
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)

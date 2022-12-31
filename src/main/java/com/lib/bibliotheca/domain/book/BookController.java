@@ -14,7 +14,7 @@ public class BookController {
     private BookService bookService;
 
     @PostMapping("/new")
-    @Operation(summary = "Adds new book")
+    @Operation(summary = "Adds a new book")
     public void addNewBook(@RequestBody BookRequest request) {
         bookService.addNewBook(request);
     }
@@ -26,7 +26,7 @@ public class BookController {
     }
 
     @GetMapping("/name")
-    @Operation(summary = "Returns book by name")
+    @Operation(summary = "Returns the book by the name")
     public BookDto getBookByName(String name) {
         return bookService.getBookByName(name);
     }

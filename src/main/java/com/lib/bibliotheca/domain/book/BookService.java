@@ -41,4 +41,10 @@ public class BookService {
 
         return bookMapper.toDto(books);
     }
+
+    public BookDto getBookByName(String name) {
+        Book book = bookRepository.findByName(name);
+
+        return bookMapper.toDto(book);
+    }
 }

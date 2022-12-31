@@ -24,4 +24,10 @@ public class BookController {
     public List<BookDto> getAllBooks() {
         return bookService.getAllBooks();
     }
+
+    @GetMapping("/name")
+    @Operation(summary = "Returns book by name")
+    public BookDto getBookByName(String name) {
+        return bookService.getBookByName(name);
+    }
 }

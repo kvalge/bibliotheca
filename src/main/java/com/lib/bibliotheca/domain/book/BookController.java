@@ -30,4 +30,10 @@ public class BookController {
     public BookDto getBookByName(String name) {
         return bookService.getBookByName(name);
     }
+
+    @PutMapping("/update")
+    @Operation(summary = "Updates the book data")
+    public void updateBook(@RequestBody BookRequest request) {
+        bookService.updateBook(request);
+    }
 }

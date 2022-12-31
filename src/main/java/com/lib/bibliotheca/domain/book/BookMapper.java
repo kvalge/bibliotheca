@@ -16,4 +16,10 @@ public interface BookMapper {
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     Book partialUpdate(BookDto bookDto, @MappingTarget Book book);
+
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    Book partialUpdate(BookRequest bookRequest, @MappingTarget Book book);
+
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    Book updateByRequest(BookRequest bookRequest);
 }

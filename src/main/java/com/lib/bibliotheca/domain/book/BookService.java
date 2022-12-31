@@ -47,4 +47,25 @@ public class BookService {
 
         return bookMapper.toDto(book);
     }
+
+    /**
+     * Gives possibility to update values of all book properties in case there have been mistakes in initial
+     * data input.
+     * Updates loan period according to new copy quantity.
+     */
+    public void updateBook(BookRequest request) {
+        Book book = bookRepository.findByName(request.getName());
+        Book updatedBook = bookMapper.partialUpdate(request, book);
+
+        int copyQuantity = updatedBook.getCopyQuantity();
+        int loanPeriod = 0;
+        if (copyQuantity < 5) {
+            loanPeriod = 1;
+        } else {
+            loanPeriod = updatedBook.getLoanPeriod();
+        }
+        updatedBook.setLoanPeriod(loanPeriod);
+
+        bookRepository.save(updatedBook);
+    }
 }

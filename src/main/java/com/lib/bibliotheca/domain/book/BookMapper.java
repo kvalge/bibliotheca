@@ -6,6 +6,8 @@ import org.mapstruct.*;
 public interface BookMapper {
     Book toEntity(BookDto bookDto);
 
+    Book toEntity(BookRequest bookRequest);
+
     BookDto toDto(Book book);
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)

@@ -15,4 +15,6 @@ public interface LibrarianMapper {
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     Librarian partialUpdate(LibrarianDto librarianDto, @MappingTarget Librarian librarian);
+
+    LibrarianDto toDto(Librarian librarian);
 }

@@ -84,7 +84,10 @@ public class LendingService {
     }
 
     /**
-     * Updates not returned book lending (books the same user has been lent and return before is left out).
+     * Updates book from the list of not yet returned books (books the same user has been lent and returned
+     * before is left out). Returned lending gets return date value and new status "Tagastatud".
+     * Updates copy quantity adding 1 as it's assumed that it's allowed to lend only one copy of a book
+     * at the time by one user.
      */
     public void updateOnReturn(String idCode, String bookName) {
         List<Lending> lendingList = lendingRepository.findByUserIdCodeAndBookName(idCode, bookName);

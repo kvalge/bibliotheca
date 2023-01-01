@@ -54,7 +54,7 @@ public class LendingService {
         LocalDate lendingDate = lending.getLendingDate();
         newLending.setLendingDate(lendingDate);
 
-        String bookName = request.getBookName();
+        String bookName = lending.getBook().getName();
         Integer copyQuantity = bookRepository.findByName(bookName).getCopyQuantity();
         LocalDate bookAcquisitionDate = bookRepository.findByName(bookName).getAcquisitionDate();
         LocalDate dueDate;

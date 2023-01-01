@@ -1,10 +1,7 @@
 package com.lib.bibliotheca.domain.lending;
 
 import io.swagger.v3.oas.annotations.Operation;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -21,4 +18,9 @@ public class LendingController {
         lendingService.addLending(request);
     }
 
+    @PutMapping("/return")
+    @Operation(summary = "Updates lending on book return by library user id code (could be library card number")
+    public void updateOnReturn(@RequestParam String idCode) {
+        lendingService.updateOnReturn(idCode);
+    }
 }

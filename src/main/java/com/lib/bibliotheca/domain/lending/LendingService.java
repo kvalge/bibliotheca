@@ -58,7 +58,7 @@ public class LendingService {
         }
         newLending.setDueDate(dueDate);
 
-        newLending.setStatus("Lent out");
+        newLending.setStatus("Välja laenutatud");
 
         LibraryUser libraryUser = libraryUserRepository.findByIdCode(request.getLibraryUserIdCode());
         newLending.setLibraryUser(libraryUser);
@@ -70,5 +70,13 @@ public class LendingService {
         newLending.setLibrarian(librarian);
 
         lendingRepository.save(newLending);
+    }
+
+    public void updateOnReturn(String idCode) {
+        Lending lending = lendingRepository.findByLibraryUserIdCode(idCode);
+        lending.setReturnDate(LocalDate.now());
+        lending.setStatus("Tagastatud");
+
+        lendingRepository.save(lending);
     }
 }

@@ -19,8 +19,9 @@ public class LendingController {
     }
 
     @PutMapping("/return")
-    @Operation(summary = "Updates lending on book return by library user id code (could be library card number")
-    public void updateOnReturn(@RequestParam String idCode) {
-        lendingService.updateOnReturn(idCode);
+    @Operation(summary = "Updates lending on book return by library user id code (could be library card number and" +
+            "by book name")
+    public void updateOnReturn(@RequestParam String idCode, @RequestParam String bookName) {
+        lendingService.updateOnReturn(idCode, bookName);
     }
 }

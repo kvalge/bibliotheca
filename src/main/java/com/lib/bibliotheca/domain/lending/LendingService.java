@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.List;
 
 @Service
 public class LendingService {
@@ -81,11 +82,20 @@ public class LendingService {
         bookService.updateCopyQuantity(bookName, copyQuantity - 1);
     }
 
-    public void updateOnReturn(String idCode) {
-        Lending lending = lendingRepository.findByLibraryUserIdCode(idCode);
-        lending.setReturnDate(LocalDate.now());
-        lending.setStatus(STATUS_RETURNED);
+    /**
+     * Updates not returned book lending (books the same user has been lent and return before is left out).
+     */
+    public void updateOnReturn(String idCode, String bookName) {
+        List<Lending> lendingList = lendingRepository.findByUserIdCodeAndBookName(idCode, bookName);
+        for (Lending lending : lendingList) {
+            if (lending.getStatus().equals(STATUS_LENT_OUT)) {
+                lending.setReturnDate(LocalDate.now());
+                lending.setStatus(STATUS_RETURNED);
+                lendingRepository.save(lending);
 
-        lendingRepository.save(lending);
+                Integer copyQuantity = lending.getBook().getCopyQuantity();
+                bookService.updateCopyQuantity(bookName, copyQuantity + 1);
+            }
+        }
     }
 }

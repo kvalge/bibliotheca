@@ -37,6 +37,12 @@ public class BookController {
         bookService.updateBook(request);
     }
 
+    @PutMapping("update/name")
+    @Operation(summary = "Updates copy quantity by the book name")
+    public void updateCopyQuantity(@RequestParam String name, @RequestParam int quantity) {
+        bookService.updateCopyQuantity(name, quantity);
+    }
+
     @DeleteMapping("/delete")
     @Operation(summary = "Deletes the book by the name")
     public void deleteBook(@RequestParam String name) {

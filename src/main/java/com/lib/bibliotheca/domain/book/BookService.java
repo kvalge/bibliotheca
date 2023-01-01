@@ -92,6 +92,18 @@ public class BookService {
     }
 
     /**
+     * It is checked is there a requested book in database before finding book by name for updating.
+     */
+    public void updateCopyQuantity(String name, int quantity) {
+        validationService.bookNotFound(name);
+
+        Book book = bookRepository.findByName(name);
+        bookMapper.updateQuantity(quantity, book);
+
+        bookRepository.save(book);
+    }
+
+    /**
      * It is checked is there a requested book in database before finding book by name for deleting.
      */
     public void deleteBook(String name) {

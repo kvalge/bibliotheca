@@ -109,6 +109,26 @@ class BookControllerTest {
     }
 
     /**
+     * Tests whether book entity's copy quantity saved to database and quantity updated in database via
+     * updateCopyQuantity method will not be asserted equals.
+     */
+    @Test
+    void updateCopyQuantity() {
+        Book bookEntity = getBookEntity();
+        saveBook(bookEntity);
+        String name = bookEntity.getName();
+        Integer copyQuantity = bookEntity.getCopyQuantity();
+
+        Integer newQuantity = 100;
+
+        bookController.updateCopyQuantity(name, newQuantity);
+
+        assertNotEquals(copyQuantity, newQuantity);
+
+        deleteBook(bookEntity);
+    }
+
+    /**
      * Tests whether via repository findByName method returns null after using deleteBook method.
      */
     @Test

@@ -9,6 +9,9 @@ import org.mapstruct.*;
 public interface LendingMapper {
     Lending toEntity(LendingDto lendingDto);
 
+    @Mapping(target = "libraryUser.idCode", source = "libraryUserIdCode")
+    @Mapping(target = "book.name", source = "bookName")
+    @Mapping(target = "librarian.idCode", source = "librarianIdCode")
     Lending toEntity(LendingRequest lendingRequest);
 
     LendingDto toDto(Lending lending);

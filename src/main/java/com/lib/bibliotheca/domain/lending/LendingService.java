@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -97,5 +98,34 @@ public class LendingService {
                 bookService.updateCopyQuantity(bookName, copyQuantity + 1);
             }
         }
+    }
+
+    /**
+     * Finds lending list with status "Välja laenutatud" and selects books which due date is before
+     * current date. Difference between due date and current date is returned as daysOverdue value in
+     * LendingReturn list.
+     */
+    public List<LendingReturn> getOverdueLendingList() {
+        List<Lending> lendingList = lendingRepository.findByStatus(STATUS_LENT_OUT);
+        List<Lending> newLendingList = new ArrayList<>();
+        for (Lending lending : lendingList) {
+            if (lending.getDueDate().isBefore(LocalDate.now())) {
+                newLendingList.add(lending);
+            }
+        }
+
+        List<LendingDto> lendingDtoList = lendingMapper.toDto(newLendingList);
+        List<LendingReturn> lendingReturns = new ArrayList<>();
+        for (LendingDto dto : lendingDtoList) {
+            long daysOver = Math.abs(ChronoUnit.DAYS.between(dto.getDueDate(), LocalDate.now()));
+            LendingReturn lendingReturn = new LendingReturn();
+            lendingReturn.setLibraryUserFirstName(dto.getLibraryUser().getFirstName());
+            lendingReturn.setLibraryUserLastName(dto.getLibraryUser().getLastName());
+            lendingReturn.setBookName(dto.getBook().getName());
+            lendingReturn.setDaysOverdue(daysOver);
+            lendingReturns.add(lendingReturn);
+        }
+
+        return lendingReturns;
     }
 }

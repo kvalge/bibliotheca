@@ -4,6 +4,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @RestController
 @RequestMapping("/lending")
@@ -23,5 +24,11 @@ public class LendingController {
             "by book name")
     public void updateOnReturn(@RequestParam String idCode, @RequestParam String bookName) {
         lendingService.updateOnReturn(idCode, bookName);
+    }
+
+    @GetMapping("/overdue")
+    @Operation(summary = "Returns a list of lendings with the overdue return date")
+    public List<LendingReturn> getOverdueLendingList() {
+        return lendingService.getOverdueLendingList();
     }
 }

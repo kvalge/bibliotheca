@@ -9,4 +9,9 @@ public interface LendingRepository extends JpaRepository<Lending, Integer> {
 
     @Query("select l from Lending l where l.libraryUser.idCode = ?1 and upper(l.book.name) = upper(?2)")
     List<Lending> findByUserIdCodeAndBookName(String idCode, String name);
+
+    @Query("select l from Lending l where upper(l.status) = upper(?1)")
+    List<Lending> findByStatus(String status);
+
+
 }

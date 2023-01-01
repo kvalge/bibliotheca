@@ -7,6 +7,7 @@ import com.lib.bibliotheca.domain.librarian.Librarian;
 import com.lib.bibliotheca.domain.librarian.LibrarianRepository;
 import com.lib.bibliotheca.domain.library_user.LibraryUser;
 import com.lib.bibliotheca.domain.library_user.LibraryUserRepository;
+import com.lib.bibliotheca.validation.ValidationService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -41,13 +42,22 @@ public class LendingService {
     @Resource
     private LibrarianRepository librarianRepository;
 
+    @Resource
+    private ValidationService validationService;
+
     /**
+     * It's checked whether there is the requested book in the library and at least one copy of it in the database.
+     * And if the library user with the inserted id code is registered as the user of the library.
      * The due date is 1 week when there are less than 5 copies left or when the book has been acquired to
-     * the library less than 90 DAYS ago. Otherwise, the due date is 4 weeks.
-     * Updates copy quantity subtracting 1 as it's assumed that it's allowed to lend only one copy of a book
+     * the library less than 90 days ago. Otherwise, the due date is 4 weeks.
+     * Updates the copy quantity subtracting 1 as it's assumed that it's allowed to lend only one copy of a book
      * at the time by one user.
      */
     public void addLending(LendingRequest request) {
+        validationService.bookNotFound(request.getBookName());
+        validationService.noCopiesLeft(request.getBookName());
+        validationService.libraryUserNotFound(request.getLibraryUserIdCode());
+
         Lending lending = lendingMapper.toEntity(request);
 
         Lending newLending = new Lending();
@@ -84,9 +94,9 @@ public class LendingService {
     }
 
     /**
-     * Updates book from the list of not yet returned books (books the same user has been lent and returned
-     * before is left out). Returned lending gets return date value and new status "Tagastatud".
-     * Updates copy quantity adding 1 as it's assumed that it's allowed to lend only one copy of a book
+     * Updates the book from the list of not yet returned books (books the same user has been lent and returned
+     * before is left out). Returned lending gets a return date value and the new status "Tagastatud".
+     * Updates the copy quantity adding 1 as it's assumed that it's allowed to lend only one copy of a book
      * at the time by one user.
      */
     public void updateOnReturn(String idCode, String bookName) {
@@ -105,8 +115,8 @@ public class LendingService {
 
     /**
      * Finds lending list with status "Välja laenutatud" and selects books which due date is before
-     * current date. Difference between due date and current date is returned as daysOverdue value in
-     * LendingReturn list.
+     * current date. The difference between due date and current date is returned as daysOverdue property
+     * value in LendingReturn list.
      */
     public List<LendingReturn> getOverdueLendingList() {
         List<Lending> lendingList = lendingRepository.findByStatus(STATUS_LENT_OUT);

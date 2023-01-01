@@ -36,7 +36,7 @@ public class ValidationService {
     private BookRepository bookRepository;
 
     /**
-     * Checks whether role already exists in database.
+     * Checks whether the role already exists in the database.
      */
     public String roleExists(String name) {
         Role role = roleRepository.findByName(name);
@@ -49,7 +49,7 @@ public class ValidationService {
     }
 
     /**
-     * Checks whether chosen username or password already exist in database.
+     * Checks whether the chosen username or password already exist in the database.
      */
     public String userExists(String username, String password) {
         List<User> users = userRepository.findAll();
@@ -63,7 +63,7 @@ public class ValidationService {
     }
 
     /**
-     * Checks whether librarian with inserted id code already exist in database.
+     * Checks whether the librarian with the inserted id code already exist in the database.
      */
     public String librarianExists(String idCode) {
         Librarian librarian = librarianRepository.findByIdCode(idCode);
@@ -76,7 +76,7 @@ public class ValidationService {
     }
 
     /**
-     * Checks whether library user with inserted id code already exist in database.
+     * Checks whether the library user with inserted id code already exist in the database.
      */
     public String libraryUserExists(String idCode) {
         LibraryUser libraryUser = libraryUserRepository.findByIdCode(idCode);
@@ -89,7 +89,7 @@ public class ValidationService {
     }
 
     /**
-     * Checks whether book with inserted name already exist in database.
+     * Checks whether the book with the inserted name already exist in the database.
      */
     public String bookExists(String name) {
         Book book = bookRepository.findByName(name);
@@ -102,7 +102,7 @@ public class ValidationService {
     }
 
     /**
-     * Checks whether there are roles in database to return.
+     * Checks whether there are roles in the database to return.
      */
     public String rolesNotFound() {
         List<Role> roleList = roleRepository.findAll();
@@ -115,7 +115,7 @@ public class ValidationService {
     }
 
     /**
-     * Checks whether there are librarians in database to return.
+     * Checks whether there are librarians in the database to return.
      */
     public String librariansNotFound() {
         List<Librarian> librarianList = librarianRepository.findAll();
@@ -128,7 +128,7 @@ public class ValidationService {
     }
 
     /**
-     * Checks whether there are library users in database to return.
+     * Checks whether there are library users in the database to return.
      */
     public String libraryUsersNotFound() {
         List<LibraryUser> libraryUserList = libraryUserRepository.findAll();
@@ -141,7 +141,7 @@ public class ValidationService {
     }
 
     /**
-     * Checks whether there are books in database to return.
+     * Checks whether there are books in the database to return.
      */
     public String booksNotFound() {
         List<Book> bookList = bookRepository.findAll();
@@ -154,7 +154,7 @@ public class ValidationService {
     }
 
     /**
-     * Checks whether there is requested role in database.
+     * Checks whether there is the requested role in the database.
      */
     public String roleNotFound(String name) {
         Role role = roleRepository.findByName(name);
@@ -167,7 +167,7 @@ public class ValidationService {
     }
 
     /**
-     * Checks whether there is requested librarian in database.
+     * Checks whether there is the requested librarian in the database.
      */
     public String librarianNotFound(String idCode) {
         Librarian librarian = librarianRepository.findByIdCode(idCode);
@@ -180,7 +180,7 @@ public class ValidationService {
     }
 
     /**
-     * Checks whether there is requested library user in database.
+     * Checks whether there is the requested library user in the database.
      */
     public String libraryUserNotFound(String idCode) {
         LibraryUser libraryUser = libraryUserRepository.findByIdCode(idCode);
@@ -193,7 +193,7 @@ public class ValidationService {
     }
 
     /**
-     * Checks whether there is requested book in database.
+     * Checks whether there is the requested book in the database.
      */
     public String bookNotFound(String name) {
         Book book = bookRepository.findByName(name);
@@ -201,6 +201,19 @@ public class ValidationService {
             return "Book is found!";
         } else {
             String message = "No book with the name '" + name + "' exists!";
+            throw new DataNotFoundException(message);
+        }
+    }
+
+    /**
+     * Checks whether there is at least one copy of the requested book in the database.
+     */
+    public String noCopiesLeft(String bookName) {
+        Integer copyQuantity = bookRepository.findByName(bookName).getCopyQuantity();
+        if (copyQuantity > 0) {
+            return "We have " + copyQuantity + " copies.";
+        } else {
+            String message = "All copies are lent out at the moment.";
             throw new DataNotFoundException(message);
         }
     }

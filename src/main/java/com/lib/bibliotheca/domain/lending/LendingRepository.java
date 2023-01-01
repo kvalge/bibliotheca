@@ -12,6 +12,4 @@ public interface LendingRepository extends JpaRepository<Lending, Integer> {
 
     @Query("select l from Lending l where upper(l.status) = upper(?1)")
     List<Lending> findByStatus(String status);
-
-
 }

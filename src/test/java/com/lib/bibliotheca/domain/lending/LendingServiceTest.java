@@ -31,6 +31,12 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.time.LocalDate;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 @SpringBootTest
 @Transactional
 class LendingServiceTest {
@@ -220,7 +226,7 @@ class LendingServiceTest {
      */
     private Book getBook() {
         BookRequest bookRequest = new BookRequest();
-        bookRequest.setName("Book");
+        bookRequest.setName("Raamat");
         bookRequest.setAcquisitionDate(LocalDate.ofEpochDay(11 - 12 - 2022));
         bookRequest.setCopyQuantity(3);
         bookRequest.setLoanPeriod(1);

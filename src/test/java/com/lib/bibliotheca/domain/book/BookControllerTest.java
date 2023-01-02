@@ -52,12 +52,15 @@ class BookControllerTest {
 
         String requestedProperties = null;
         for (BookDto bookDto : bookDtoList) {
-            String dtoName = bookDto.getName();
-            LocalDate dtoAcquisitionDate = bookDto.getAcquisitionDate();
-            Integer dtoCopyQuantity = bookDto.getCopyQuantity();
-            Integer dtoLoanPeriod = bookDto.getLoanPeriod();
-            String dtoLocation = bookDto.getLocation();
-            requestedProperties = dtoName + dtoAcquisitionDate + dtoCopyQuantity + dtoLoanPeriod + dtoLocation;
+            if (bookDto.getName().equals(bookEntity.getName())) {
+                String dtoName = bookDto.getName();
+                LocalDate dtoAcquisitionDate = bookDto.getAcquisitionDate();
+                Integer dtoCopyQuantity = bookDto.getCopyQuantity();
+                Integer dtoLoanPeriod = bookDto.getLoanPeriod();
+                String dtoLocation = bookDto.getLocation();
+                requestedProperties = dtoName + dtoAcquisitionDate + dtoCopyQuantity + dtoLoanPeriod + dtoLocation;
+            }
+
         }
 
         assertEquals(entityProperties, requestedProperties);

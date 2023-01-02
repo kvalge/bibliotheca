@@ -28,6 +28,12 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDate;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+import java.time.LocalDate;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -219,7 +225,7 @@ class LendingRepositoryTest {
      */
     private Book getBook() {
         BookRequest bookRequest = new BookRequest();
-        bookRequest.setName("Book");
+        bookRequest.setName("Raamat");
         bookRequest.setAcquisitionDate(LocalDate.ofEpochDay(11 - 12 - 2022));
         bookRequest.setCopyQuantity(3);
         bookRequest.setLoanPeriod(1);

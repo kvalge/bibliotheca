@@ -1,7 +1,4 @@
 INSERT INTO role (id, name)
-VALUES (DEFAULT, 'administraator');
-
-INSERT INTO role (id, name)
 VALUES (DEFAULT, 'laenutaja');
 
 INSERT INTO role (id, name)

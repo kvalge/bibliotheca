@@ -27,6 +27,9 @@ public class LibraryUserService {
     @Resource
     private ValidationService validationService;
 
+    /**
+     * Validates whether the library user already exists in database before adding new user.
+     */
     public void addNewUser(LibraryUserRequest request) {
         validationService.libraryUserExists(request.getIdCode());
 
@@ -42,6 +45,9 @@ public class LibraryUserService {
         libraryUserRepository.save(newLibraryUser);
     }
 
+    /**
+     * It is checked isn't the library users' database empty before returning all users.
+     */
     public List<LibraryUserResponse> getAllUsers() {
         validationService.libraryUsersNotFound();
 
@@ -49,6 +55,9 @@ public class LibraryUserService {
         return libraryUserMapper.toResponse(libraryUsers);
     }
 
+    /**
+     * It is checked is there a requested library user in database before finding user by id code.
+     */
     public LibraryUserResponse getUserByIdCode(String idCode) {
         validationService.libraryUserNotFound(idCode);
 
@@ -56,6 +65,10 @@ public class LibraryUserService {
         return libraryUserMapper.toResponse(libraryUser);
     }
 
+    /**
+     * It is checked is there a requested library user in database before finding user by id code
+     * for deleting.
+     */
     public void deleteUser(String idCode) {
         validationService.libraryUserNotFound(idCode);
 

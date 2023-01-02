@@ -27,12 +27,19 @@ Carried out by librarian.
 
 ### Database
 Used database PostgreSQL.  
-Database credentials in application.properties file on line 11-12.  
+Database credentials in application.properties file on lines 11-12.  
+Added lending.uml file to db for tables diagram.
 
 ### Testing
 Same PostgreSQL database is used for unit testing deleting entries after each test.  
 For functionalities' testing is used Swagger (http://localhost:8080/documentation/swagger-ui.html).  
-  
+
+### VCS
+For version control is used GitHub.  
+IntelliJ IDEA task integration with GitHub is used to create task log.  
+
+
+
 
 --------------------------------------------------  
   

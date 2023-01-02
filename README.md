@@ -12,10 +12,10 @@ Javadoc directory with index.html file to get general overview of project.
 
 ### Main functionalities
 1. Add and edit library user.  
-Role: user can have role as library user, librarian or administrator.  
+Role: user can have role as librarian or library user.  
 User: branching out from role every user have username and password. Branching to librarian and library-user.  
 Librarian: to add, return all and delete librarian (id code as a unique identifier could be replaced with 
-the number of a certificate of employment). Functionalities carried out by administrator.  
+the number of a certificate of employment).  
 Library-user: to add, return all, return by id code (could be replaced with the library card number), delete 
 library user. Functionalities carried out by librarian.  
 2. Add and edit book.  

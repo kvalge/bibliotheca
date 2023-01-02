@@ -1,4 +1,4 @@
-package com.lib.bibliotheca.infrastructure.exeption;
+package com.lib.bibliotheca.infrastructure.exception;
 
 import lombok.Data;
 

@@ -10,8 +10,8 @@ import com.lib.bibliotheca.domain.role.Role;
 import com.lib.bibliotheca.domain.role.RoleRepository;
 import com.lib.bibliotheca.domain.user.User;
 import com.lib.bibliotheca.domain.user.UserRepository;
-import com.lib.bibliotheca.infrastructure.exeption.DataAlreadyExistsException;
-import com.lib.bibliotheca.infrastructure.exeption.DataNotFoundException;
+import com.lib.bibliotheca.infrastructure.exception.DataAlreadyExistsException;
+import com.lib.bibliotheca.infrastructure.exception.DataNotFoundException;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

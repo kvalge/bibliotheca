@@ -90,7 +90,6 @@ class BookControllerTest {
      */
     @Test
     void updateBook() {
-
         Book bookEntity = getBookEntity();
         saveBook(bookEntity);
         String entityProperties = entityProperties(bookEntity);

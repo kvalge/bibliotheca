@@ -31,11 +31,6 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import java.time.LocalDate;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
-
 @SpringBootTest
 @Transactional
 class LendingControllerTest {
@@ -132,6 +127,7 @@ class LendingControllerTest {
      * request.
      * Tests whether updateOnReturn method turns lending status to "Tagastatud" and adds returnDate.
      */
+
     @Test
     void updateOnReturn() {
         Role role = getRole();

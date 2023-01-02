@@ -31,11 +31,6 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import java.time.LocalDate;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
-
 @SpringBootTest
 @Transactional
 class LendingRepositoryTest {
@@ -82,7 +77,7 @@ class LendingRepositoryTest {
      * Tests equality between string of concatenated property values of hard coded request saved to the
      * database via addLending method and property values returned from the database via findByUserIdCodeAndBookName
      * repository method.
-     */
+      */
     @Test
     void findByUserIdCodeAndBookName() {
         Role role = getRole();
@@ -126,7 +121,7 @@ class LendingRepositoryTest {
      * Saves to the database role, user, library user, librarian, book to get data for hard coded lending
      * request saved to the database via lending service addLending method.
      * Tests whether via findByStatus returned lending and status message doesn't return null;
-     */
+      */
     @Test
     void findByStatus() {
         Role role = getRole();

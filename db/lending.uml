@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>DATABASE</ID>
+  <OriginalElement>0c47b325-0834-45d2-81b5-ed602bcb5ab4.TABLE:postgres.public.lending</OriginalElement>
+  <nodes>
+    <node x="-234.74193548387086" y="1.032258064516114">0c47b325-0834-45d2-81b5-ed602bcb5ab4.TABLE:postgres.public.library_user</node>
+    <node x="401.032258064516" y="1.032258064516114">0c47b325-0834-45d2-81b5-ed602bcb5ab4.TABLE:postgres.public.librarian</node>
+    <node x="82.14516129032256" y="-105.0">0c47b325-0834-45d2-81b5-ed602bcb5ab4.TABLE:postgres.public.role</node>
+    <node x="82.64516129032256" y="402.8709677419356">0c47b325-0834-45d2-81b5-ed602bcb5ab4.TABLE:postgres.public.lending</node>
+    <node x="82.14516129032258" y="11.741935483870947">0c47b325-0834-45d2-81b5-ed602bcb5ab4.TABLE:postgres.public.user</node>
+    <node x="83.14516129032256" y="181.03225806451616">0c47b325-0834-45d2-81b5-ed602bcb5ab4.TABLE:postgres.public.book</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="0c47b325-0834-45d2-81b5-ed602bcb5ab4.TABLE:postgres.public.lending" target="0c47b325-0834-45d2-81b5-ed602bcb5ab4.TABLE:postgres.public.book" relationship="REFERENCES">
+      <point x="51.333333333333336" y="-104.5" />
+      <point x="210.9784946236559" y="383.0" />
+      <point x="159.64516129032256" y="383.0" />
+      <point x="0.0" y="82.5" />
+    </edge>
+    <edge source="0c47b325-0834-45d2-81b5-ed602bcb5ab4.TABLE:postgres.public.user" target="0c47b325-0834-45d2-81b5-ed602bcb5ab4.TABLE:postgres.public.role" relationship="REFERENCES">
+      <point x="0.0" y="-60.5" />
+      <point x="159.64516129032256" y="-8.129032258064527" />
+      <point x="159.14516129032256" y="-8.129032258064527" />
+      <point x="0.0" y="38.5" />
+    </edge>
+    <edge source="0c47b325-0834-45d2-81b5-ed602bcb5ab4.TABLE:postgres.public.library_user" target="0c47b325-0834-45d2-81b5-ed602bcb5ab4.TABLE:postgres.public.user" relationship="REFERENCES">
+      <point x="0.0" y="-76.85483870967741" />
+      <point x="-158.24193548387086" y="168.0" />
+      <point x="159.64516129032256" y="168.0" />
+      <point x="0.0" y="60.5" />
+    </edge>
+    <edge source="0c47b325-0834-45d2-81b5-ed602bcb5ab4.TABLE:postgres.public.librarian" target="0c47b325-0834-45d2-81b5-ed602bcb5ab4.TABLE:postgres.public.user" relationship="REFERENCES">
+      <point x="0.0" y="-76.85483870967737" />
+      <point x="469.532258064516" y="168.0" />
+      <point x="159.64516129032256" y="168.0" />
+      <point x="0.0" y="60.5" />
+    </edge>
+    <edge source="0c47b325-0834-45d2-81b5-ed602bcb5ab4.TABLE:postgres.public.lending" target="0c47b325-0834-45d2-81b5-ed602bcb5ab4.TABLE:postgres.public.librarian" relationship="REFERENCES">
+      <point x="0.0" y="-104.5" />
+      <point x="159.64516129032256" y="366.5" />
+      <point x="469.532258064516" y="366.5" />
+      <point x="0.0" y="76.85483870967737" />
+    </edge>
+    <edge source="0c47b325-0834-45d2-81b5-ed602bcb5ab4.TABLE:postgres.public.lending" target="0c47b325-0834-45d2-81b5-ed602bcb5ab4.TABLE:postgres.public.library_user" relationship="REFERENCES">
+      <point x="-51.33333333333334" y="-104.5" />
+      <point x="108.31182795698922" y="383.0" />
+      <point x="-158.24193548387086" y="383.0" />
+      <point x="0.0" y="76.85483870967741" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.5849056603773585" showDependencies="false" x="338.741935483871" y="256.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Columns</Category>
+    <Category>Comments</Category>
+    <Category>Key columns</Category>
+    <Category>Virtual foreign keys</Category>
+  </Categories>
+</Diagram>
+

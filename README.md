@@ -1,31 +1,44 @@
-# Library application
+# BIBLIOTHECA
 
-Book lending system which allows to manage books, library users and lending data.  
+Library application which allows to manage users, books and lending data.  
 Used IDE: IntelliJ 2022.3.
 
-## Main functionalities
+### Project structure
+Domain directory to manage functionalities.  
+Infrastructure directory for exception classes.  
+Validation directory to create user input validation methods.  
+db directory to create tables and insert data for database.  
+Javadoc directory with index.html file to get general overview of project.  
 
-1. Add and edit books.
-2. Add and edit library users.
-3. Add and edit book lending.
+### Main functionalities
+1. Add and edit library user.  
+Role: user can have role as library user, librarian or administrator.  
+User: branching out from role every user have username and password. Branching to librarian and library-user.  
+Librarian: to add, return all and delete librarian (id code as a unique identifier could be replaced with 
+the number of a certificate of employment). Functionalities carried out by administrator.  
+Library-user: to add, return all, return by id code (could be replaced with the library card number), delete 
+library user. Functionalities carried out by librarian.  
+2. Add and edit book.  
+Book: to add a new book, return all, find by name, update all book data, update the quantity of copies,
+delete a book. Can be used by librarian and library user.  
+3. Add and edit lending.  
+Lending: to lend book out, update lending on book return, returning a lending list with overdue deadlines. 
+Carried out by librarian.
 
-## Project structure
-Created db directory to create tables for database.
+### Database
+Used database PostgreSQL.  
+Database credentials in application.properties file on line 11-12.  
 
-Code comments are created inside code.  
-Created javadoc directory with index.html file to get general access to code comments.
+### Testing
+Same PostgreSQL database is used for unit testing deleting entries after each test.  
+For functionalities' testing is used Swagger (http://localhost:8080/documentation/swagger-ui.html).  
+  
 
-## Database
-Used database PostgreSQL.
-Database credentials in application.properties file line 11-12.
-Same database is used for testing deleting entries after each test.
-
-
-
+--------------------------------------------------  
+  
 
 ### Reference Documentation
 For further reference, please consider the following sections:
-
 * [Official Gradle documentation](https://docs.gradle.org)
 * [Spring Boot Gradle Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/2.7.8-SNAPSHOT/gradle-plugin/reference/html/)
 * [Create an OCI image](https://docs.spring.io/spring-boot/docs/2.7.8-SNAPSHOT/gradle-plugin/reference/html/#build-image)
@@ -35,7 +48,6 @@ For further reference, please consider the following sections:
 
 ### Guides
 The following guides illustrate how to use some features concretely:
-
 * [Accessing Data with JPA](https://spring.io/guides/gs/accessing-data-jpa/)
 * [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
 * [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
@@ -44,6 +56,5 @@ The following guides illustrate how to use some features concretely:
 
 ### Additional Links
 These additional references should also help you:
-
 * [Gradle Build Scans – insights for your project's build](https://scans.gradle.com#gradle)
 

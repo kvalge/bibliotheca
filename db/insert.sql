@@ -57,3 +57,6 @@ VALUES (DEFAULT, '2023-01-02', '2023-01-09', NULL, 'väljalaenutatud', 218, 324,
 INSERT INTO  lending(id, lending_date, due_date, return_date, status, library_user_id, book_id, librarian_id)
 VALUES (DEFAULT, '2023-01-02', '2023-01-09', NULL, 'väljalaenutatud', 216, 325, 217);
 
+INSERT INTO  lending(id, lending_date, due_date, return_date, status, library_user_id, book_id, librarian_id)
+VALUES (DEFAULT, '2022-08-02', '2023-01-09', NULL, 'väljalaenutatud', 218, 325, 217);
+

@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/libraryuser")
 public class LibraryUserController {
 

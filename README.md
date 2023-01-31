@@ -3,10 +3,6 @@
 Library application which allows to manage users, books and lending data.  
 Used IDE: IntelliJ 2022.3.  
 Spring app and postgres db images in Docker Hub: https://hub.docker.com/r/kvdocker123/bibliotheca.  
-To run containers:  
-docker run --name bibliotheca-spring -p 8080:8080 -d kvdocker123/bibliotheca:spring  
-docker run --name bibliotheca-postgres -p 5432:5432 -e POSTGRES_PASSWORD=postgres -d kvdocker123/bibliotheca
-:postgres  
 
 ### Project structure
 Domain directory to manage functionalities.  

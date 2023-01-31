@@ -1,1 +1,9 @@
 com.lib.bibliotheca
+com.lib.bibliotheca.domain.book
+com.lib.bibliotheca.domain.lending
+com.lib.bibliotheca.domain.librarian
+com.lib.bibliotheca.domain.library_user
+com.lib.bibliotheca.domain.role
+com.lib.bibliotheca.domain.user
+com.lib.bibliotheca.infrastructure.exception
+com.lib.bibliotheca.validation

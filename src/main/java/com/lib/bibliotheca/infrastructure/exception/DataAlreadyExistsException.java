@@ -3,7 +3,7 @@ package com.lib.bibliotheca.infrastructure.exception;
 import lombok.Data;
 
 @Data
-public class DataAlreadyExistsException extends RuntimeException{
+public class DataAlreadyExistsException extends RuntimeException {
 
     private String message;
 

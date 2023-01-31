@@ -217,4 +217,14 @@ public class ValidationService {
             throw new DataNotFoundException(message);
         }
     }
+
+    public String userNotFound(String name) {
+        User user = userRepository.findByUserName(name);
+        if (user != null) {
+            return "User is found";
+        } else {
+            String message = "No user with the user name '" + name + "' exists!";
+            throw new DataNotFoundException(message);
+        }
+    }
 }

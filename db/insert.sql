@@ -46,17 +46,20 @@ VALUES (DEFAULT, 'Everyday Chaos: Technology, Complexity, and How We’re Thrivi
 
 
 INSERT INTO  lending(id, lending_date, due_date, return_date, status, library_user_id, book_id, librarian_id)
-VALUES (DEFAULT, '2023-01-02', '2023-01-20', NULL, 'väljalaenutatud', 216, 322, 217);
+VALUES (DEFAULT, '2023-01-02', '2023-01-20', NULL, 'välja laenutatud', 216, 322, 217);
 
 INSERT INTO  lending(id, lending_date, due_date, return_date, status, library_user_id, book_id, librarian_id)
-VALUES (DEFAULT, '2023-01-02', '2023-01-09', NULL, 'väljalaenutatud', 217, 323, 217);
+VALUES (DEFAULT, '2023-01-02', '2023-01-09', NULL, 'välja laenutatud', 217, 323, 217);
 
 INSERT INTO  lending(id, lending_date, due_date, return_date, status, library_user_id, book_id, librarian_id)
-VALUES (DEFAULT, '2023-01-02', '2023-01-09', NULL, 'väljalaenutatud', 218, 324, 217);
+VALUES (DEFAULT, '2023-01-02', '2023-01-09', NULL, 'välja laenutatud', 218, 324, 217);
 
 INSERT INTO  lending(id, lending_date, due_date, return_date, status, library_user_id, book_id, librarian_id)
-VALUES (DEFAULT, '2023-01-02', '2023-01-09', NULL, 'väljalaenutatud', 216, 325, 217);
+VALUES (DEFAULT, '2023-01-02', '2023-01-09', NULL, 'välja laenutatud', 216, 325, 217);
 
 INSERT INTO  lending(id, lending_date, due_date, return_date, status, library_user_id, book_id, librarian_id)
-VALUES (DEFAULT, '2022-08-02', '2023-01-09', NULL, 'väljalaenutatud', 218, 325, 217);
+VALUES (DEFAULT, '2022-08-02', '2023-01-09', NULL, 'välja laenutatud', 217, 325, 217);
+
+INSERT INTO  lending(id, lending_date, due_date, return_date, status, library_user_id, book_id, librarian_id)
+VALUES (DEFAULT, '2022-06-03', '2023-07-01', NULL, 'välja laenutatud', 216, 325, 217);
 

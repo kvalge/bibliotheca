@@ -1,5 +1,7 @@
 package com.lib.bibliotheca.domain.user;
 
+import com.lib.bibliotheca.domain.role.Role;
+import com.lib.bibliotheca.domain.role.RoleRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -15,12 +17,17 @@ class UserRepositoryTest {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private RoleRepository roleRepository;
+
     /**
      * Tests whether user saved to database via user service addUser method will not return null if requested by
      * findByUsernameAndPassword method.
      */
     @Test
     void findByUsernameAndPassword() {
+        Role role = getRole();
+
         UserRequest userRequest = getUserRequest();
 
         userService.addUser(userRequest);
@@ -30,6 +37,7 @@ class UserRepositoryTest {
         assertNotNull(user);
 
         userRepository.delete(user);
+        roleRepository.delete(role);
     }
 
     /**
@@ -38,6 +46,7 @@ class UserRepositoryTest {
      */
     @Test
     void findByUserName() {
+        Role role = getRole();
         UserRequest userRequest = getUserRequest();
 
         userService.addUser(userRequest);
@@ -47,6 +56,7 @@ class UserRepositoryTest {
         assertNotNull(user);
 
         userRepository.delete(user);
+        roleRepository.delete(role);
     }
 
     /**
@@ -58,5 +68,15 @@ class UserRepositoryTest {
         userRequest.setPassword("Salasõna");
         userRequest.setRoleName("user");
         return userRequest;
+    }
+
+    /**
+     * Hard coded role entity.
+     */
+    private Role getRole() {
+        Role role = new Role();
+        role.setName(getUserRequest().getRoleName());
+        roleRepository.save(role);
+        return role;
     }
 }

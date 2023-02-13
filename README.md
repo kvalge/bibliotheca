@@ -3,7 +3,6 @@
 Library application which allows to manage users, books and lending data.  
 Used IDE: IntelliJ 2022.3.  
 Created Dockerfile and docker-compose.yml to containerize application and db.  
-Spring app and postgres db images in Docker Hub: https://hub.docker.com/r/kvdocker123/bibliotheca. 
 
 ### Project structure
 Domain directory to manage functionalities.  
